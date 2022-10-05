@@ -20,11 +20,12 @@ export class App extends React.Component {
 	submitHandler = data => {
 		const names = this.state.contacts.map(contact => contact.name.toLowerCase())
 
+		if (names.includes(data.name.toLowerCase())) {
+			alert(`${data.name} is already in contscts.`);
+			return;
+		}
+
 		this.setState(prevState => {
-			if (names.includes(data.name.toLowerCase())) {
-				alert(`${data.name} is already in contscts.`);
-				return;
-			}
 			return {
 				contacts: [...prevState.contacts, { name: data.name, id: nanoid(), number: data.number }]
 			}
@@ -55,7 +56,7 @@ export class App extends React.Component {
 
 			{this.state.contacts.length > 0 &&
 				(<Container text="Contact list">
-					<Filter value={this.state.value} onChange={this.changeFilter} />
+					<Filter onChange={this.changeFilter} />
 					<ContactsList state={filteredContacts} deleteContact={this.deleteContact} />
 				</Container>)
 			}

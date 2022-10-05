@@ -1,7 +1,14 @@
+import PropTypes from 'prop-types';
+import { ContainerCommon, MainTitle, MainIcon } from './Container.styled'
 
 export const Container = ({ text, children }) => {
-	return <div>
-		<h2>{text}</h2>
+	return <ContainerCommon>
+		<MainTitle><MainIcon></MainIcon>{text}</MainTitle>
 		{children}
-	</div>
+	</ContainerCommon>
+}
+
+Container.propTypes = {
+	text: PropTypes.string,
+	children: PropTypes.node.isRequired,
 }

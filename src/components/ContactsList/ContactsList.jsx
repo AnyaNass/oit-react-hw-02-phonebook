@@ -1,14 +1,25 @@
+import PropTypes from 'prop-types';
+import { FaMobileAlt, FaRegTrashAlt } from 'react-icons/fa';
+import { List, ListItem, ItemInfo, Info, DeleteButton } from './ContactsList.styled'
 
 export const ContactsList = ({ state, deleteContact }) => {
 	return (
-		<ul>
+		<List>
 			{state.map(item => {
-				return <li key={item.id}>
-					<span>{item.name}</span>
-					<span>{item.number}</span>
-					<button type="button" onClick={(e) => deleteContact(item.id)}>Delete</button>
-				</li>
+				return <ListItem key={item.id}>
+					<ItemInfo>
+						<Info><FaMobileAlt /></Info>
+						<Info>{item.name}:</Info>
+						<Info>{item.number}</Info>
+					</ItemInfo>
+					<DeleteButton type="button" onClick={(e) => deleteContact(item.id)}><FaRegTrashAlt /></DeleteButton>
+				</ListItem>
 			})}
-		</ul >
+		</List >
 	)
+}
+
+ContactsList.propTypes = {
+	state: PropTypes.arrayOf(PropTypes.object).isRequired,
+	deleteContact: PropTypes.func.isRequired,
 }

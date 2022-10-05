@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { FaUserPlus } from 'react-icons/fa';
+import { Form, FormWrapper, FormField, FormLable, AddButton } from './PhoneBook.styled'
 export class PhoneBook extends React.Component {
 	state = {
 		name: '',
@@ -23,12 +24,10 @@ export class PhoneBook extends React.Component {
 	}
 
 	render() {
-		// console.log(this.state);
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<label>
-					<span>Name</span>
-					<input
+			<Form onSubmit={this.handleSubmit}>
+				<FormWrapper>
+					<FormField
 						type="text"
 						name="name"
 						pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -37,10 +36,10 @@ export class PhoneBook extends React.Component {
 						value={this.state.name}
 						onChange={this.handleInputChange}
 					/>
-				</label>
-				<label>
-					<span>Phone</span>
-					<input
+					<FormLable>Name</FormLable>
+				</FormWrapper>
+				<FormWrapper>
+					<FormField
 						type="tel"
 						name="number"
 						pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -49,9 +48,10 @@ export class PhoneBook extends React.Component {
 						value={this.state.number}
 						onChange={this.handleInputChange}
 					/>
-				</label>
-				<button type="submit">Add contact</button>
-			</form >
+					<FormLable>Phone</FormLable>
+				</FormWrapper>
+				<AddButton type="submit"><FaUserPlus /></AddButton>
+			</Form >
 		)
 	}
 };
