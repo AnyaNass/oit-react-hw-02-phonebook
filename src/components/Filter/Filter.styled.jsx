@@ -13,6 +13,7 @@ export const Label = styled.span`
 	left: 50px;
 	z-index: 1;
 	text-transform: lowercase;
+	font-weight: 100;
 `
 export const FilterInput = styled.input`
 	width: 100%;

@@ -15,13 +15,14 @@ export const FormLable = styled.span`
 	left: 50px;
 	z-index: 1;
 	text-transform: lowercase;
+	font-weight: 100;
 `
 
 export const FormField = styled.input`
 	width: 100%;
 	background-color: #000;
 	border: none;
-	padding: 15px 10px 15px 110px;
+	padding: 15px 10px 15px 80px;
 	display: block;
 	outline: none;
 	color: #fff;
