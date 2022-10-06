@@ -8,8 +8,9 @@ export class PhoneBook extends React.Component {
 	}
 
 	handleInputChange = e => {
+		const { name, value } = e.target;
 		this.setState({
-			[e.target.name]: e.target.value
+			[name]: value,
 		})
 	}
 
@@ -24,6 +25,7 @@ export class PhoneBook extends React.Component {
 	}
 
 	render() {
+		const { name, number } = this.state;
 		return (
 			<Form onSubmit={this.handleSubmit}>
 				<FormWrapper>
@@ -34,7 +36,7 @@ export class PhoneBook extends React.Component {
 						pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
 						title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
 						required
-						value={this.state.name}
+						value={name}
 						onChange={this.handleInputChange}
 					/>
 					<FormLable><FaUserAlt /></FormLable>
@@ -47,7 +49,7 @@ export class PhoneBook extends React.Component {
 						pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
 						title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
 						required
-						value={this.state.number}
+						value={number}
 						onChange={this.handleInputChange}
 					/>
 					<FormLable><FaPhoneAlt /></FormLable>
